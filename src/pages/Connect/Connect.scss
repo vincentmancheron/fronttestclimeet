@@ -1,0 +1,25 @@
+@use '../../index.scss';
+
+#connect {
+    @extend .justify-align-center;
+    height: 100vh;
+    font-size: 1.2em;
+
+    form {
+        @extend .align-center;
+        @extend .flex-column;
+
+        img {
+            @extend .w-25;
+            @extend .mb-2;
+        }
+
+        .connect__input {
+            @extend .my-2;
+        }
+
+        button {
+            @extend .mt-2;
+        }
+    }
+}

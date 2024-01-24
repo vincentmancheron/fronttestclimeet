@@ -1,0 +1,17 @@
+@use '../../index.scss';
+
+.navbar {
+    #navbar__backLogo {
+        width: 8em;
+        border-radius: 100%;
+        margin-left: 2em;
+    }
+
+    #dropdown-basic {
+        margin-right: 2em;
+
+        img {
+            width: 6em;
+        }
+    }
+}
