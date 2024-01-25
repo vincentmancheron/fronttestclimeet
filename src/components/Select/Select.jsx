@@ -66,7 +66,7 @@ const Select = ({
 							menuPortal: (base) => ({ ...base, zIndex: 9999 })
 						}}
 					/>
-					{errors[name] && (
+					{errors && errors[name] && (
 						<FormHelperText error={true}>
 							{errors[name].message}
 						</FormHelperText>

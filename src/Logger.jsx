@@ -25,21 +25,31 @@ export const Logger = () => {
 
 	// * Check du Bearer:
 	useEffect(() => {
-		let storedToken = localStorage.getItem('REACT_TOKEN_AUTH_TEST_CLIMEET')
-		if (!storedToken) {
-			setChecked(true)
-		} else {
-			let token = JSON.parse(storedToken)
-			axios.defaults.headers.common = {
-				Authorization: 'bearer ' + token
-			}
-			checkBearer().then(() => {
-				setConnexion(true)
-				setUserInfos({ ...jwtDecode(token).user, token })
+		if (!checked) {
+			let storedToken = localStorage.getItem(
+				'REACT_TOKEN_AUTH_TEST_CLIMEET'
+			)
+			if (!storedToken) {
 				setChecked(true)
-			})
+			} else {
+				// On ajoute le token de l'App:
+				let token = JSON.parse(storedToken)
+				axios.defaults.headers.common = {
+					Authorization: 'bearer ' + token
+				}
+
+				// ! ainsi que la key CoinIo:
+				// axios.defaults.headers.common['X-CoinAPI-Key'] =
+				// 	process.env.REACT_APP_COINAPIIO_KEY
+
+				checkBearer().then(() => {
+					setConnexion(true)
+					setUserInfos({ ...jwtDecode(token).user, token })
+					setChecked(true)
+				})
+			}
 		}
-	}, [])
+	}, [checked])
 
 	// * Intercepteur Axios:
 	axios.interceptors.response.use(
