@@ -44,7 +44,7 @@ export const Logger = () => {
 
 				checkBearer().then(() => {
 					setConnexion(true)
-					setUserInfos({ ...jwtDecode(token).user, token })
+					setUserInfos({ ...jwtDecode(token), token })
 					setChecked(true)
 				})
 			}

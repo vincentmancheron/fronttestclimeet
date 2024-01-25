@@ -4,10 +4,13 @@ import { logoC, logoClimeet } from '../../assets'
 import './Navbar.scss'
 import { profile } from '../../assets'
 import { Dropdown } from 'react-bootstrap'
+import { useContext } from 'react'
+import { Context } from '../../Logger'
 
 const Navbar = () => {
 	//* Déclarations:
 	const navigate = useNavigate(),
+		{ roles } = useContext(Context),
 		disconnect = () => {
 			localStorage.clear()
 			// localStorage.removeItem('REACT_AUTH_TOKEN')
@@ -35,6 +38,11 @@ const Navbar = () => {
 				</Dropdown.Toggle>
 
 				<Dropdown.Menu>
+					{roles.includes('ROLE_ADMIN') && (
+						<Dropdown.Item onClick={() => navigate('/users')}>
+							Liste des utilisateurs
+						</Dropdown.Item>
+					)}
 					<Dropdown.Item onClick={disconnect}>
 						Déconnexion
 					</Dropdown.Item>

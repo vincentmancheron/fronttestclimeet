@@ -58,7 +58,6 @@ const AlertsList = ({ alerts, setAlerts, setShowModal }) => {
 				</thead>
 				<tbody>
 					{alerts.map((alert) => {
-						console.log(alert)
 						let {
 							id,
 							idBase,
